@@ -2,10 +2,44 @@
 <html>
 	<head>
 		<title>Create Photo</title>
+
+		<!-- jQuery -->
+		<script src="res/lib/jquery/jquery.js"></script>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="res/lib/bootstrap/css/bootstrap.min.css">
+		<script src="res/lib/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- JS -->
+		<script src="res/js/main.js"></script>
 	</head>
 	<body>
-		<div>
-			Teste
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<h1 class="text-center">
+						Criador de Fotos
+					</h1>
+				</div>
+				<div class="row">
+					<div id="id-form-div">
+						<form id="id-form">
+							<div class="form-group">
+								<label for="id-input-file-photo">Importe a sua foto</label>
+								<input type="file" id="id-input-file-photo" class="form-control">
+							</div>
+							<button id="id-form-save" class="btn btn-primary">Salvar</button>
+						</form>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div id="id-div-imagem" class="col-md-6 col-md-offset-3">
+							<img src="" id="id-img-imagem-input" class="img-responsive img-thumbnail">
+						</div>
+					</div>
+				</div>	
+			</div>
 		</div>
 	</body>
 </html>
