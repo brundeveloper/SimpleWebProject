@@ -31,7 +31,7 @@
 		//Coloca o texto na imagem
 		imagettftext($image, $textSize, 0, $textX, $textH, $textColor, $textFont, $text);
 	}
-
+	$contador_linhas = 0;
 	//Retorna os texto em array
 	function getTexts($image, $textSize, $textFont, $text){
 		//Array com o texto a ser retornado
@@ -52,15 +52,15 @@
 			$phrase .= $wordArray[$i]." ";
 
 			//Verifica se o texto esta maior que o limite
-			if (getTextWidth($textSize, $textFont, $phrase) > ($imageWidth - 100)){
+			if (getTextWidth($textSize, $textFont, $phrase) > ($imageWidth - 125)){
 				//Adiciona a frase no retorno
 				array_push($retorno, trim($phrase));
 
 				//Limpa a variável
 				$phrase = "";
+//				$contador_linhas+=1;
 			}
 		}
-
 		//Adiciona a frase no retorno
 		array_push($retorno, trim($phrase));
 
@@ -92,10 +92,20 @@
 		//Obtem o array com o texto
 		$textArray = getTexts($image, $textSize, $textFont, $text);
 
+		//vai armazenar a metade da imagem para insersão do texto
+		$meio = imagesy($image);
+		//$c=0;
+
 		//Passa por cada texto
 		for ($i = 0; $i < count($textArray); $i++){
 			//Coloca o texto na imagem
-			textImage($image, $textSize, $textColor, $textFont, $textArray[$i], (200 + ($i * ($textSize + 5))));
+			$c =  30 + ($i * ($textSize + 5));
+			if($c < (imagesy($image) - 30)){
+				textImage($image, $textSize, $textColor, $textFont, $textArray[$i], $c);
+			}else{
+				textImage($image, $textSize, $textColor, $textFont, $textArray[$i].'...', $c);
+				break;
+			}
 		}
 	}
 
